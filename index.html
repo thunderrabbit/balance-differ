@@ -89,8 +89,6 @@
 			}
 		}
 		// Save options
-		if (document.timeCalc.plusMinusMode[0].checked == 1) params[params.length] = 'mode=0';
-		if (document.timeCalc.plusMinusMode[1].checked == 1) params[params.length] = 'mode=1';
 		if (document.timeCalc.singleFormat[0].checked == 1) params[params.length] = 'fs0=1';
 		if (document.timeCalc.singleFormat[1].checked == 1) params[params.length] = 'fs1=1';
 		if (document.timeCalc.singleFormat[2].checked == 1) params[params.length] = 'fs2=1';
@@ -187,12 +185,6 @@
 		    }
 		}
 		return nil;
-	}
-
-    function changeMode() {
-		if (document.timeCalc.plusMinusMode[0].checked) mode = 'add';
-		else mode = 'sub';
-		addTimes();
 	}
 
     function addTimes() {
@@ -453,18 +445,6 @@
 						fps = num;
 					//}
 				}
-			} else if (param[0] == 'mode') {
-				// PlusMinusMode
-				num = param[1];		// mode index
-				if (num == 0) {
-					mode = 'add';
-					document.timeCalc.plusMinusMode[0].checked = true;
-					document.timeCalc.plusMinusMode[1].checked = false;
-				} else if (num == 1) {
-					mode = 'sub';
-					document.timeCalc.plusMinusMode[0].checked = false;
-					document.timeCalc.plusMinusMode[1].checked = true;
-				}
 			}
 		}
 
@@ -509,9 +489,6 @@
 					style="font-size:12px; text-align:center;">&nbsp;&nbsp;&nbsp;
 				<input type=button value="save data as url" title="Save this data as a url" onClick="saveData()"
 					style="font-size:12px; text-align:center;">
-				<br/>Mode:
-				<input type="radio" name="plusMinusMode" id="plusMode" value=0 checked onclick="changeMode()"><label for="plusMode">add values</label>,&nbsp;&nbsp;
-				<input type="radio" name="plusMinusMode" id="minusMode" value=1 onclick="changeMode()"><label for="minusMode">subtract values</label>
 				<br/>
 			</td></tr>
 			<tr>
