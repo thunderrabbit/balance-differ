@@ -44,35 +44,15 @@
 
 	<script language="JavaScript">
 
-	var mode = 'add';		// default
-
  	// Takes a string in the form 'h:m:s.s', 'm:s.s', or 's' and converts to seconds
     function stringToSeconds (timeString) {
 		return Number(timeString);
-    }
-
- 	// Takes a string in the form 'h:m:s:f', 'm:s:f', 's:f' or 'f' and extract the frames
-    function stringToFrames (timeString) {
-		return 11
-    }
-
- 	// Takes an hr string, mn string, and sec string and converts to seconds
-    function stringToSeconds3 (dayString, hrString, minString, secString) {
- 		return Number(dayString)*86400 + Number(hrString)*3600 + Number(minString)*60 + Number(secString)
     }
 
  	// Takes seconds and converts to h:m:s.s
     function secondsToString (seconds) {
 		return Number(seconds)
 	}
-
-    function round2(myNumber) {
-        return Math.floor(Math.round(myNumber * 100)) / 100
-    }
-
-    function round3(myNumber) {
-        return Math.floor(Math.round(myNumber * 1000)) / 1000
-    }
 
 	function saveData() {
 		var params = [];
@@ -326,37 +306,6 @@
 						</font>
 			</td></tr>
 		</table><br>
-
-		<table cellspacing="0" border=0 cellpadding="5">
-			<tr>
-				<td align=left colspan="10" bgcolor="#ddddee" class=threeD nowrap>
-						<div style="text-align:center;"><font size=4 color="navy"><b>Output format</b></font></div>
-						<font size=-1><br/>
-
-						<input type=radio name="outputFormat" id="outputdhmsf" value="d:h:m:s:f" onClick="addTimes()"><label for="outputdhmsf"><b>days:hr:min:sec:frames</b></label>,<br/><br/>
-
-						<input type=radio name="outputFormat" id="outputdhms" value="d:h:m:s" onClick="addTimes()" checked><label for="outputdhms"><b>days:hr:min:sec</b></label>,<br/>
-						<input type=radio name="outputFormat" id="outputhmsf" value="h:m:s:f" onClick="addTimes()"><label for="outputhmsf"><b>hr:min:sec:frames</b></label>,<br/><br/>
-
-						<input type=radio name="outputFormat" id="outputdhm" value="d:h:m" onClick="addTimes()"><label for="outputdhm"><b>day:hr:min</b></label>,<br/>
-						<input type=radio name="outputFormat" id="outputhms" value="h:m:s" onClick="addTimes()"><label for="outputhms"><b>hr:min:sec</b></label>,<br/>
-						<input type=radio name="outputFormat" id="outputmsf" value="m:s:f" onClick="addTimes()"><label for="outputmsf"><b>min:sec:frames</b></label>,<br/><br/>
-
-						<input type=radio name="outputFormat" id="outdh" value="d:h" onClick="addTimes()"><label for="outdh"><b>days:hr</b></label>, <br/>
-						<input type=radio name="outputFormat" id="outhm" value="h:m" onClick="addTimes()"><label for="outhm"><b>hr:min</b></label>, <br/>
-						<input type=radio name="outputFormat" id="outms" value="m:s" onClick="addTimes()"><label for="outms"><b>min:sec</b></label>, <br/>
-						<input type=radio name="outputFormat" id="outsf" value="s:f" onClick="addTimes()"><label for="outsf"><b>sec:frames</b></label>,
-						<br/><br/>
-
-						<input type=radio name="outputFormat" id="outd" value="d" onClick="addTimes()"><label for="outd"><b>days</b></label>,<br/>
-						<input type=radio name="outputFormat" id="outh" value="h" onClick="addTimes()"><label for="outh"><b>hr</b></label>,<br/>
-						<input type=radio name="outputFormat" id="outm" value="m" onClick="addTimes()"><label for="outm"><b>min</b></label>,<br/>
-						<input type=radio name="outputFormat" id="outs" value="s" onClick="addTimes()"><label for="outs"><b>sec</b></label>,<br/>
-						<input type=radio name="outputFormat" id="outf" value="f" onClick="addTimes()"><label for="outf"><b>frames</b></label>
-						<br/><br/>
-						</font>
-			</td></tr>
-		</table><br/>
 
 		<input type=button value="clear fields" onClick="clearFields()"
 			style="font-size:12px; text-align:center;">&nbsp;&nbsp;&nbsp;
