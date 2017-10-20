@@ -89,22 +89,6 @@
 			}
 		}
 		// Save options
-		if (document.timeCalc.outputFormat[0].checked == 1) params[params.length] = 'o0=1';
-		if (document.timeCalc.outputFormat[1].checked == 1) params[params.length] = 'o1=1';
-		if (document.timeCalc.outputFormat[2].checked == 1) params[params.length] = 'o2=1';
-		if (document.timeCalc.outputFormat[3].checked == 1) params[params.length] = 'o3=1';
-		if (document.timeCalc.outputFormat[4].checked == 1) params[params.length] = 'o4=1';
-		if (document.timeCalc.outputFormat[5].checked == 1) params[params.length] = 'o5=1';
-		if (document.timeCalc.outputFormat[6].checked == 1) params[params.length] = 'o6=1';
-		if (document.timeCalc.outputFormat[7].checked == 1) params[params.length] = 'o7=1';
-		if (document.timeCalc.outputFormat[8].checked == 1) params[params.length] = 'o8=1';
-		if (document.timeCalc.outputFormat[9].checked == 1) params[params.length] = 'o9=1';
-		if (document.timeCalc.outputFormat[10].checked == 1) params[params.length] = 'o10=1';
-		if (document.timeCalc.outputFormat[11].checked == 1) params[params.length] = 'o11=1';
-		if (document.timeCalc.outputFormat[12].checked == 1) params[params.length] = 'o12=1';
-		if (document.timeCalc.outputFormat[13].checked == 1) params[params.length] = 'o13=1';
-		if (document.timeCalc.outputFormat[14].checked == 1) params[params.length] = 'o14=1';
-
 		if (params.length == 0) var url = baseUrl;
 		else var url = baseUrl + '?' + params.join('&');
 		prompt('copy and save this url:',url);
@@ -120,12 +104,8 @@
 		}
 		document.timeCalc.timeMin.value = ""
 		document.timeCalc.timeMax.value = ""
-		document.timeCalc.timeAvg.value = ""
-		document.timeCalc.timeTotal.value = ""
 		document.timeCalc.timeMin2.value = ""
 		document.timeCalc.timeMax2.value = ""
-		document.timeCalc.timeAvg2.value = ""
-		document.timeCalc.timeTotal2.value = ""
 
         document.timeCalc.time1.focus()
     }
@@ -159,14 +139,6 @@
 
 		// Display the outputFormat
 		outFormat = 'Of';
-		writeLayer('totalFormatDisplay','&nbsp;' + outFormat + '&nbsp;');
-		writeLayer('outputFormatDisplay','&nbsp;' + outFormat + '&nbsp;');
-		writeLayer('inputFormatDisplay',
-					'&nbsp;' + 'ts' + '&nbsp;<br/>' +
-					'&nbsp;' + 't4f' + '&nbsp;<br/>' +
-					'&nbsp;' + 't3f' + '&nbsp;<br/>' +
-					'&nbsp;' + 't2f' + '&nbsp;<br/>' +
-					'&nbsp;' + 't1f' + '&nbsp;');
 
 		//Do frames get displayed?
 		var displayFrames = false;
@@ -220,11 +192,9 @@
 		if (count > 0) {
 			document.timeCalc.timeMin.value = document.timeCalc.timeMin2.value = secondsToString(minsec);
 			document.timeCalc.timeMax.value = document.timeCalc.timeMax2.value = secondsToString(maxsec);
-			document.timeCalc.timeAvg.value = document.timeCalc.timeAvg2.value = secondsToString(totalTime/count);
 		} else {
 			document.timeCalc.timeMin.value = document.timeCalc.timeMin2.value = ""
 			document.timeCalc.timeMax.value = document.timeCalc.timeMax2.value = ""
-			document.timeCalc.timeAvg.value = document.timeCalc.timeAvg2.value = ""
 		}
 		document.timeCalc.timeTotal.value = document.timeCalc.timeTotal2.value = secondsToString(totalTime);
     }
@@ -241,43 +211,6 @@
 		return true
 	}
 
-	function secToMins(sec) {
-		return sec/60.0
-	}
-
-	function secToHours(sec) {
-		return sec/3600.0
-	}
-
-	function minsToSec(mn) {
-		return mn*60.0
-	}
-
-	function hoursToSec(hr) {
-		return hr*3600.0
-	}
-
-	function changeFT(radioObj) {		// change FractionType (Decimal)
-		if (radioObj.checked) {
-			document.timeCalc.fps.value = '';
-			fps = 100;
-		}
-		addTimes();
-	}
-
-	function changeFps(textObj) {
-		if (isNaN(textObj.value)) {
-			alert("Frames per second must be a number");
-			textObj.value = '';
-			//document.timeCalc.fractionType.checked = true;
-			document.timeCalc.fps.focus();
-		} else {
-			//document.timeCalc.fractionType.checked = false;
-			fps = textObj.value;
-		}
-		addTimes();
-	}
-
 	function writeLayer(layerID,txt){
 		if(document.getElementById){
 			  document.getElementById(layerID).innerHTML=txt;
@@ -292,11 +225,6 @@
 		}
 	}
 
-//	var myDate = new Date(2000, 0, 0)
-//	myDate.setSeconds
-//	alert(myDate.toString())
-
-	var fps = 100;		// decimal by default
 	var baseUrl
 	function initPage() {
 		// Parse url parameters
@@ -445,41 +373,22 @@
 
 
 
-	<!--- column 3 --->
 	<div style="width:410px; float:left;">
 
 		<table border="4">
 			<tr bgcolor="#bbbbcc">
-				<td align="center" colspan=3><b>Time Calculator</b></td>
+				<td align="center" colspan=3><b>Balance Differ</b></td>
 			</tr>
 			<tr bgcolor=#bbbbcc>
 				<!-- TIME STATISTICS -->
 				<td align=right>
 					<font size=2>min: </font><input type=text name=timeMin size=10><br>
 					<font size=2>max: </font><input type=text name=timeMax size=10><br>
-					<font size=2>avg: </font><input type=text name=timeAvg size=10><br>
 				</td>
 				<!-- TIME TOTAL -->
 				<td align=center valign=top nowrap>
-					<font size=2><b>total time:</b></font><br>
-					<input type=text name=timeTotal size=10 style="background-color:#EEE;"><br>
-					<div id="totalFormatDisplay">&nbsp;hr : min : sec&nbsp;</div>
 				</td>
 				<td>&nbsp;</td>
-			</tr>
-			<tr bgcolor="#ccccdd">
-				<!-- TIME -->
-				<td align=center valign=top>
-					<!--- <p>&nbsp;<br>&nbsp;&nbsp;&nbsp;&nbsp;hr&nbsp;&nbsp;:&nbsp;&nbsp;min&nbsp;&nbsp;:&nbsp;&nbsp;sec&nbsp;&nbsp;&nbsp;&nbsp; --->
-					&nbsp;&nbsp;&nbsp;&nbsp;<b>enter times:</b>&nbsp;&nbsp;&nbsp;&nbsp;<br/>
-					<div id="inputFormatDisplay"></div>
-				</td>
-				<!-- CUMULATIVE TIME -->
-				<td align=center valign=top><b>cumulative<br/>times:</b><br/><br/>
-					<div id="outputFormatDisplay"></div>
-				</td>
-				<!-- COMMENTS -->
-				<td align=center valign=top><b>comments</b></td>
 			</tr>
 			<tr bgcolor="#ccccdd">
 				<!-- TIME -->
@@ -781,7 +690,6 @@
 				<td align=right>
 				<font size=2>min: </font><input type=text name=timeMin2 size=10 style="background-color:#EEE;"><br>
 				<font size=2>max: </font><input type=text name=timeMax2 size=10 style="background-color:#EEE;"><br>
-				<font size=2>avg: </font><input type=text name=timeAvg2 size=10 style="background-color:#EEE;"><br>
 				</td>
 				<!-- TIME TOTAL -->
 				<td align=center valign=top>
