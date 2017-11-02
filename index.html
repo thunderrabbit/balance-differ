@@ -90,17 +90,6 @@
         document.timeCalc.time1.focus()
     }
 
-	// Returns the value of the first selected radio button, else returns nil
-	function selectedRadioValue(radioGroupObj) {		// eg. document.mainForm.myRadioName
-		//var radioGroupObj = document.getElementsByName(radioName);
-		for(var i = 0; i < radioGroupObj.length; i++){
-		    if(radioGroupObj[i].checked){
-		        return radioGroupObj[i].value;
-		    }
-		}
-		return nil;
-	}
-
     function addTimes() {
 		var prevTotalTime = 0;
 		var prevTotalFrames = 0;
